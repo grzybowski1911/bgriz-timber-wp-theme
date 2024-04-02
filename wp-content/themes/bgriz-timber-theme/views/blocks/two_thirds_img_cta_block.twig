@@ -1,0 +1,51 @@
+{#
+/**
+ * Block Name: Two Thirds Img Cta Block
+ *
+ * This is the template that displays the HTwo Thirds Img Cta block.
+ */
+#}
+
+{% if is_preview %}
+
+{% endif %}
+
+<div class="flex justify-center items-center two-thirds-img-cta-block-{{ block.id }} {{fields.section_background_color}} p-10">
+  <div class="max-w-full sm:max-w-[900px] flex flex-col sm:flex-row justify-between items-center px-6"> <!-- Adding max-width and padding -->
+    <!-- Two-thirds column -->
+    <div class="w-full sm:w-2/3 mb-6 sm:mb-0">
+      <!-- Content from ACF -->
+      <div class="p-4">
+        <!-- ACF Content -->
+        {{ fields.block_content }}
+      </div>
+
+    <!-- CTA Buttons -->
+    <div class="flex mt-4 max-w-[400px] sm:max-w-full">
+    {% for button in fields.cta_buttons %}
+        <a href="{{ fields.cta_link }}">
+        <button class="bg-{{ button.cta_background_color }} hover:bg-{{ button.cta_background_color }} font-bold py-2 px-4 rounded {% if loop.index == 2 %}ml-10{% endif %}">
+            {{ button.cta_text }}
+        </button>
+        </a>
+    {% endfor %}
+    </div>
+
+    </div>
+
+    <!-- One-third column with image -->
+    <div class="w-full sm:w-1/3 ml-0 sm:ml-6"> <!-- Adding margin between columns -->
+      <img src="{{ fields.block_image['url'] }}" alt="{% if fields.block_image['alt'] %}{{ fields.block_image['alt'] }}{% else %}Ben Grzybowski web development and design in portland oregon{% endif %}" class="w-full h-auto">
+    </div>
+  </div>
+</div>
+
+
+
+
+<style type="text/css">
+    #testimonial-{{ block.id }} {
+        background: {{ fields.background_color }};
+        color: {{ fields.text_color }};
+    }
+</style>

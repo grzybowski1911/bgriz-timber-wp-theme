@@ -1,0 +1,79 @@
+@import "animation/animation.scss";
+
+// Colors 
+
+$white: #fff;
+$dark: #000;
+$dark-blue: #6093BF;
+$med-dark-blue: #72CEF2;
+$med-blue: #7aa5bf;
+$light-blue: #CEE8F2;
+$grey: #f2f2f2;
+
+// Homepage banner
+
+.banner-overlay {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(270deg, #6093BF, #72CEF2, #7aa5bf, #CEE8F2, #f2f2f2);
+    background-size: 1000% 1000%;
+    -webkit-animation: bgChange 30s ease infinite;
+    -moz-animation: bgChange 30s ease infinite;
+    animation: bgChange 30s ease infinite;
+}
+
+// buttons 
+
+button {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+}
+
+.bg-dark {
+    background-color: $dark;
+    color: $white;
+}
+
+.bg-medium {
+    background-color: $dark-blue;
+    color: $white;
+}
+
+.bg-light {
+    background-color: $med-blue;
+    color: $white;
+}
+
+.bg-white {
+    background-color: $white;
+    color: $dark;
+}
+
+// Block Backgrounds
+
+.block-bg-dark {
+    background-color: $dark;
+    color: $white;
+}
+
+.block-bg-dark-blue {
+    background-color: $dark-blue;
+    color: $white;
+}
+
+.block-bg-med-dark-blue {
+    background-color: $med-dark-blue;
+    color: $white;
+}
+
+.block-bg-med-blue {
+    background-color: $med-dark-blue;
+    color: $white;
+}
+
+.block-bg-light-blue {
+    background-color: $light-blue;
+    color: $dark;
+}

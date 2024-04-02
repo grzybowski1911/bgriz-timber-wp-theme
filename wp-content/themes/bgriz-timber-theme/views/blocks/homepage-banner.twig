@@ -7,19 +7,16 @@
 #}
 
 {% if is_preview %}
-    <p>I will only appear in the editor.</p>
+
 {% endif %}
 
-<div id="homepage-banner-{{ block.id }}" class="wrapper">
-    <h1>{{ fields.title }}</h1>
-    <p>{{ fields.description }}</p>
-</div>
-
-<section id="homepage-banner-{{ block.id }}" class="homepage-banner wrapper" style="background-image: url('{{ fields.homepage_banner_bg_image['url'] }}');">
+<div class="banner-overlay">
+    <section id="homepage-banner-{{ block.id }}" class="homepage-banner wrapper h-screen w-screen bg-cover flex justify-center items-center bg-no-repeat" style="background-image: url('{{ fields.homepage_banner_bg_image['url'] }}');">
     <div class="logo-container">
-        test
+        <img src="{{ fields.homepage_banner_logo_image['url'] }}" alt="{% if fields.homepage_banner_logo_image['alt'] %}{{ fields.block_image['alt'] }}{% else %}Ben Grzybowski Web Development and Design Portland Oregon Logo{% endif %}">
     </div>
-</section>
+    </section>
+</div>
 
 
 <style type="text/css">
