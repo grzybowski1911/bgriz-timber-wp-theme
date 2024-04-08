@@ -1,5 +1,22 @@
 @import "animation/animation.scss";
 
+// Breakpoints 
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 600px) { @content }; //600px
+    }
+    @if $breakpoint == tab-port {
+        @media (max-width: 900px) { @content }; //900px
+    }
+    @if $breakpoint == tab-land {
+        @media (max-width: 1200px) { @content }; //1200px
+    }
+    @if $breakpoint == big-d {
+        @media (min-width: 1800px) { @content }; //1800px
+    }
+}
+
 // Colors 
 
 $white: #fff;
@@ -10,16 +27,64 @@ $med-blue: #7aa5bf;
 $light-blue: #CEE8F2;
 $grey: #f2f2f2;
 
-// Homepage banner
+// Fonts 
+// Font families added in html-header.twig
 
-.banner-overlay {
-    height: 100vh;
-    width: 100%;
-    background: linear-gradient(270deg, #6093BF, #72CEF2, #7aa5bf, #CEE8F2, #f2f2f2);
-    background-size: 1000% 1000%;
-    -webkit-animation: bgChange 30s ease infinite;
-    -moz-animation: bgChange 30s ease infinite;
-    animation: bgChange 30s ease infinite;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lobster', cursive;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+$base-font-size: 16px;
+
+$heading-font: 'Lobster', cursive;
+$body-font: 'Roboto', sans-serif;
+
+$h1-font-size: 2.5rem;
+$h2-font-size: 2rem;
+$h3-font-size: 1.75rem;
+$h4-font-size: 1.5rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1rem;
+
+$body-font-size: 1rem;
+
+h1 {
+  font-size: $h1-font-size;
+  font-family: $heading-font;
+}
+
+h2 {
+  font-size: $h2-font-size;
+  font-family: $heading-font;
+}
+
+h3 {
+  font-size: $h3-font-size;
+  font-family: $heading-font;
+}
+
+h4 {
+  font-size: $h4-font-size;
+  font-family: $heading-font;
+}
+
+h5 {
+  font-size: $h5-font-size;
+  font-family: $heading-font;
+}
+
+h6 {
+  font-size: $h6-font-size;
+  font-family: $heading-font;
+}
+
+body {
+  font-size: $body-font-size;
+  font-family: $body-font;
 }
 
 // buttons 
@@ -76,4 +141,53 @@ button {
 .block-bg-light-blue {
     background-color: $light-blue;
     color: $dark;
+}
+
+
+// Homepage Banner Block
+
+.banner-overlay {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(270deg, #6093BF, #72CEF2, #7aa5bf, #CEE8F2, #f2f2f2);
+    background-size: 1000% 1000%;
+    -webkit-animation: bgChange 30s ease infinite;
+    -moz-animation: bgChange 30s ease infinite;
+    animation: bgChange 30s ease infinite;
+}
+
+
+// Two Thirds Img CTA Block
+
+.two-thirds-img-cta {
+    height: 100vh;
+}
+
+// Spinning Logo BG Cols Block 
+
+.spinning-logo-bg-cols {
+    position: relative;
+
+    .column {
+        z-index: 999;
+    }
+
+    #circle {
+        animation-timing-function: linear;
+        transform-origin: center;
+        animation: rotate 120s infinite;
+    }
+
+    .bg-svg {
+        position: absolute;
+        width: 65%;
+        top: 0;
+        right: -10%;
+        opacity: 0.15;
+        @include respond(phone){
+            width: 165%;
+            top: 25%;
+            right: 5%;
+        }
+    }
 }

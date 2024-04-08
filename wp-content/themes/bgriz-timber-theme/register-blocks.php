@@ -66,6 +66,20 @@ function homepage_banner_render_callback($block, $content = '', $is_preview = fa
     Timber::render('blocks/homepage-banner.twig', $context);
 }
 
+function two_thirds_img_cta_block_render_callback($block, $content = '', $is_preview = false) {
+    $context = Timber::context([
+        // Store block values.
+        'block' => $block,
+        // Store field values.
+        'fields' => get_fields(),
+        // Store $is_preview value.
+        'is_preview' => $is_preview,
+    ]);
+
+    // Render the block.
+    Timber::render('blocks/two_thirds_img_cta_block.twig', $context);
+}
+
 function spinning_logo_bg_cols_render_callback($block, $content = '', $is_preview = false)
 {
     $context = Timber::context([

@@ -10,7 +10,7 @@
 
 {% endif %}
 
-<div class="flex justify-center items-center two-thirds-img-cta-block-{{ block.id }} {{fields.section_background_color}} p-10">
+<div id="two-thirds-img-cta-{{ block.id }}" class="two-thirds-img-cta flex justify-center items-center mh-screen w-screen {{fields.section_background_color}} p-10">
   <div class="max-w-full sm:max-w-[900px] flex flex-col sm:flex-row justify-between items-center px-6"> <!-- Adding max-width and padding -->
     <!-- Two-thirds column -->
     <div class="w-full sm:w-2/3 mb-6 sm:mb-0">
@@ -44,8 +44,5 @@
 
 
 <style type="text/css">
-    #testimonial-{{ block.id }} {
-        background: {{ fields.background_color }};
-        color: {{ fields.text_color }};
-    }
+
 </style>
