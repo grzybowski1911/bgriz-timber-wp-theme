@@ -1,0 +1,42 @@
+{#
+/**
+ * Block Name: Post Display Sticky Img
+ *
+ * This is the template that displays the Post Display Sticky Img block.
+ */
+#}
+
+{% if is_preview %}
+
+{% endif %}
+
+<div id="post-display-sticky-img-{{ block.id }}" class="post-display-sticky-img">
+
+<div class="flex flex-wrap">
+    <div class="w-full lg:w-2/3 p-4">
+        <p>{{ fields.post_type_selection }}</p>
+        {% set post_type = fields.post_type_selection %}
+        {% set posts = get_custom_posts(post_type) %}
+        {% if posts|length > 0 %}
+            {% for post in posts %}
+                <div class="mb-4">
+                    <h2 class="text-lg font-bold">{{ post.post_title }}</h2>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No posts found.</p>
+        {% endif %}
+    </div>
+    <div class="w-full lg:w-1/3 p-4">
+        <img src="{{ fields.sticky_image['url'] }}" alt="{% if fields.sticky_image['alt'] %}{{ fields.sticky_image['alt'] }}{% else %}Custom {% endif %}"/>
+    </div>
+</div>
+
+</div>
+
+
+
+
+<style type="text/css">
+
+</style>
