@@ -167,6 +167,7 @@ button {
 
 .spinning-logo-bg-cols {
     position: relative;
+    overflow: hidden;
 
     .column {
         z-index: 999;
@@ -190,4 +191,17 @@ button {
             right: 5%;
         }
     }
+}
+
+// Post Dislay Sticky Img Block 
+
+.post-display-sticky-img {
+    background-color: $white;
+
+    .sticky-img {
+        margin: 0 auto;
+        position: sticky;
+        top: 150px;
+    }
+
 }

@@ -20,16 +20,31 @@ new StarterSite();
 
 // Function to fetch posts
 function get_custom_posts($post_type) {
-
   $args = array(
       'post_type' => $post_type,
       'posts_per_page' => -1,
   );
 
   $query = new WP_Query($args);
-  
-  return $query->posts;
+  $posts_with_thumbnails = array();
+
+  foreach ($query->posts as $post) {
+      setup_postdata($post);
+      $thumbnail_url = get_the_post_thumbnail_url($post->ID);
+
+      // Collecting all necessary post data
+      $posts_with_thumbnails[] = array(
+          'ID' => $post->ID,
+          'post_title' => get_the_title($post),
+          'post_excerpt' => get_the_excerpt($post),
+          'thumbnail_url' => $thumbnail_url ? $thumbnail_url : '',
+      );
+  }
+
+  wp_reset_postdata();
+  return $posts_with_thumbnails;
 }
+
 
 // Add custom function to Twig
 add_filter('get_twig', 'add_custom_twig_functions');
