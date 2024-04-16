@@ -52,6 +52,17 @@ function register_acf_blocks()
             'icon' => 'dashicons-desktop',
             'keywords' => ['spinning logo cols','spinning section', 'logo bg'],
         ]);
+
+        // Post display grid
+        acf_register_block([
+            'name' => 'post_display_grid',
+            'title' => __('Post Display in grid layout', 'bgriz-timber-theme'),
+            'description' => __('Displays posts in a grid style layout', 'bgriz-timber-theme'),
+            'render_callback' => 'post_display_grid_render_callback',
+            'category' => 'formatting',
+            'icon' => 'dashicons-desktop',
+            'keywords' => ['spinning logo cols','spinning section', 'logo bg'],
+        ]);
 }
 
 
@@ -121,3 +132,17 @@ function post_display_sticky_img_render_callback($block, $content = '', $is_prev
     Timber::render('blocks/post-display-sticky-img-block.twig', $context);
 }
 
+function post_display_grid_render_callback($block, $content = '', $is_preview = false)
+{
+    $context = Timber::context([
+        // Store block values.
+        'block' => $block,
+        // Store field values.
+        'fields' => get_fields(),
+        // Store $is_preview value.
+        'is_preview' => $is_preview,
+    ]);
+
+    // Render the block.
+    Timber::render('blocks/post-display-grid-block.twig', $context);
+}
