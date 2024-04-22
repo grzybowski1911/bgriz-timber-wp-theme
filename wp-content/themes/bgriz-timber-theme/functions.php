@@ -19,10 +19,12 @@ new StarterSite();
 // Add function to query posts in twig files 
 
 // Function to fetch posts
-function get_custom_posts($post_type) {
+function get_custom_posts($post_type, $paged = 1) {
+  $posts_per_page = 6;
   $args = array(
       'post_type' => $post_type,
-      'posts_per_page' => -1,
+      'posts_per_page' => $posts_per_page,
+      'paged' => $paged,
   );
 
   $query = new WP_Query($args);
@@ -45,13 +47,34 @@ function get_custom_posts($post_type) {
   return $posts_with_thumbnails;
 }
 
-
 // Add custom function to Twig
 add_filter('get_twig', 'add_custom_twig_functions');
 function add_custom_twig_functions($twig) {
   $twig->addFunction(new \Twig\TwigFunction('get_custom_posts', 'get_custom_posts'));
   return $twig;
 }
+
+function ajax_load_more_posts() {
+  $post_type = $_POST['post_type'];
+  $page = $_POST['page'];
+
+  $posts = get_custom_posts($post_type, $page);
+  if (!empty($posts)) {
+      foreach ($posts as $post) {
+          echo '<div class="w-full sm:w-1/2 md:w-1/3 p-2">
+                    <div class="p-4 bg-white shadow-lg rounded-lg">
+                        <h2 class="text-lg font-semibold">' . esc_html($post['post_title']) . '</h2>
+                        <p>' . esc_html($post['post_excerpt']) . '</p>
+                    </div>
+                </div>';
+      }
+  }
+  die();
+}
+
+add_action('wp_ajax_nopriv_load_more', 'ajax_load_more_posts');
+add_action('wp_ajax_load_more', 'ajax_load_more_posts');
+
 
 // Register blocks 
 
@@ -68,6 +91,15 @@ function enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
 add_action( 'enqueue_block_editor_assets', 'enqueue_styles' ); // Hook for editor
 
+
+// Load more scripts 
+
+function enqueue_load_more_scripts() {
+  wp_enqueue_script('load-more', get_template_directory_uri() . '/static/js/load-more.js', array('jquery'), null, true);
+  wp_localize_script('load-more', 'ajaxurl', admin_url('admin-ajax.php'));
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_load_more_scripts');
 
 // Define custom post type for Jobs
 function custom_post_type_jobs() {
