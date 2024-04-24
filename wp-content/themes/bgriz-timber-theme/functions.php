@@ -60,13 +60,17 @@ function ajax_load_more_posts() {
 
   $posts = get_custom_posts($post_type, $page);
   if (!empty($posts)) {
-      foreach ($posts as $post) {
-          echo '<div class="w-full sm:w-1/2 md:w-1/3 p-2">
-                    <div class="p-4 bg-white shadow-lg rounded-lg">
-                        <h2 class="text-lg font-semibold">' . esc_html($post['post_title']) . '</h2>
-                        <p>' . esc_html($post['post_excerpt']) . '</p>
-                    </div>
-                </div>';
+    foreach ($posts as $post) {
+          $featured_image_url = get_the_post_thumbnail_url($post['ID']);
+          echo '
+          <div class="post-grid-item w-full sm:w-1/2 md:w-1/3 p-4">
+            <div class="post-grid-item-inner shadow-lg rounded-lg mx-4 my-4">
+                <h4 class="text-lg font-semibold text-center p-4">'. esc_html($post['title']) .'</h4>
+                <div class="p-4 post-grid-img">
+                    <img src="'. esc_html($featured_image_url) .'" alt="" class="max-w-full h-auto">
+                </div>
+            </div>
+          </div>';
       }
   }
   die();

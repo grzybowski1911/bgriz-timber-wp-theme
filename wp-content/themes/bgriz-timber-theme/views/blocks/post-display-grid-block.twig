@@ -19,12 +19,14 @@
         {% set post_type = fields.post_type_selection %}
         {% set posts = get_custom_posts(post_type, rand) %}
         {% if posts|length > 0 %}
-            <div id="post-grid-container" class="flex flex-wrap">
+            <div id="post-grid-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {% for post in posts %}
-                    <div class="w-full sm:w-1/2 md:w-1/3 shadow-lg rounded-lg p-4">
-                        <h4 class="text-lg font-semibold text-center p-4">{{ post.post_title }}</h4>
-                        <div class="p-4 post-grid-img">
-                            <img src="{{ post.thumbnail_url ? post.thumbnail_url : '/wp-content/uploads/2024/03/2021-logo.png' }}" alt="{% if post.alt %}{{ post.alt }}{% else %}Web development projects Ben Grzybowski has built or contributed to{% endif %}" class="max-w-full h-auto">
+                    <div class="post-grid-item p-4">
+                        <div class="post-grid-item-inner shadow-lg rounded-lg">
+                            <h4 class="text-lg font-semibold text-center p-4">{{ post.post_title }}</h4>
+                            <div class="p-4 post-grid-img">
+                                <img src="{{ post.thumbnail_url ? post.thumbnail_url : '/wp-content/uploads/2024/03/2021-logo.png' }}" alt="{% if post.alt %}{{ post.alt }}{% else %}Web development projects Ben Grzybowski has built or contributed to{% endif %}" class="max-w-full h-auto">
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
