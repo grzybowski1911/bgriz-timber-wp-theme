@@ -63,6 +63,17 @@ function register_acf_blocks()
             'icon' => 'dashicons-desktop',
             'keywords' => ['spinning logo cols','spinning section', 'logo bg'],
         ]);
+
+        // Carousel Block
+        acf_register_block([
+            'name' => 'slick_slider_with_content',
+            'title' => __('Slick Slider with Content', 'bgriz-timber-theme'),
+            'description' => __('Display a slider of images with option content to the left or right of the slider', 'bgriz-timber-theme'),
+            'render_callback' => 'slick_slider_with_content_render_callback',
+            'category' => 'formatting',
+            'icon' => 'dashicons-desktop',
+            'keywords' => ['slider','slick', 'carousel'],
+        ]);
 }
 
 
@@ -145,4 +156,19 @@ function post_display_grid_render_callback($block, $content = '', $is_preview = 
 
     // Render the block.
     Timber::render('blocks/post-display-grid-block.twig', $context);
+}
+
+function slick_slider_with_content_render_callback($block, $content = '', $is_preview = false)
+{
+    $context = Timber::context([
+        // Store block values.
+        'block' => $block,
+        // Store field values.
+        'fields' => get_fields(),
+        // Store $is_preview value.
+        'is_preview' => $is_preview,
+    ]);
+
+    // Render the block.
+    Timber::render('blocks/slick-slider-with-content-block.twig', $context);
 }

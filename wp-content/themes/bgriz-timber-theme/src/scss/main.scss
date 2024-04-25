@@ -116,6 +116,7 @@ button {
     color: $dark;
 }
 
+
 // Block Backgrounds
 
 .block-bg-dark {
@@ -210,4 +211,15 @@ button {
 
 .post-display-grid {
     
+}
+
+
+// General override for gutenberg previews
+// issues with widths on blocks display improperly on the backend 
+
+.block-editor__container {
+    .banner-overlay {
+        height: auto !important;;
+        width: auto !important;
+    }
 }

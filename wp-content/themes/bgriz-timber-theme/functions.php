@@ -85,12 +85,17 @@ add_action('wp_ajax_load_more', 'ajax_load_more_posts');
 include('register-blocks.php');
 
 /**
- * Enqueue Tailwind CSS
+ * Enqueue Tailwind CSS + Slick Slider CSS
  */
 
 function enqueue_styles() {
     wp_enqueue_style( 'tailwindcss', get_template_directory_uri() . '/dist/css/style.css', array(), '1.0.0', 'all' );
     wp_enqueue_style( 'sass-css', get_template_directory_uri() . '/dist/css/sass-comp.css', array(), '1.0.0', 'all' );
+    wp_enqueue_style( 'slick-slider-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css' );
+    
+    wp_enqueue_script( 'jquery' ); 
+    wp_enqueue_script( 'slick-slider-js', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), '1.8.1', true );
+
   }
 add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
 add_action( 'enqueue_block_editor_assets', 'enqueue_styles' ); // Hook for editor
