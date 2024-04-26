@@ -63,7 +63,7 @@ function ajax_load_more_posts() {
     foreach ($posts as $post) {
           $featured_image_url = get_the_post_thumbnail_url($post['ID']);
           echo '
-          <div class="post-grid-item w-full sm:w-1/2 md:w-1/3 p-4">
+          <div class="post-grid-item p-4">
             <div class="post-grid-item-inner shadow-lg rounded-lg mx-4 my-4">
                 <h4 class="text-lg font-semibold text-center p-4">'. esc_html($post['title']) .'</h4>
                 <div class="p-4 post-grid-img">
@@ -91,10 +91,11 @@ include('register-blocks.php');
 function enqueue_styles() {
     wp_enqueue_style( 'tailwindcss', get_template_directory_uri() . '/dist/css/style.css', array(), '1.0.0', 'all' );
     wp_enqueue_style( 'sass-css', get_template_directory_uri() . '/dist/css/sass-comp.css', array(), '1.0.0', 'all' );
-    wp_enqueue_style( 'slick-slider-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css' );
+    wp_enqueue_style( 'slick-css', get_template_directory_uri() . '/static/slick/slick.css', array() );
+    wp_enqueue_style( 'slick-slider-theme-css', get_template_directory_uri() . '/static/slick/slick-theme.css', array() );
     
     wp_enqueue_script( 'jquery' ); 
-    wp_enqueue_script( 'slick-slider-js', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), '1.8.1', true );
+    wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/static/slick/slick.min.js', array('jquery'), '1.8.1', true );
 
   }
 add_action( 'wp_enqueue_scripts', 'enqueue_styles' );

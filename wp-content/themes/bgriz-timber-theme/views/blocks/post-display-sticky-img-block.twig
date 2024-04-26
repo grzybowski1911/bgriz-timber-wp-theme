@@ -10,7 +10,7 @@
 
 {% endif %}
 
-<div id="post-display-sticky-img-{{ block.id }}" class="post-display-sticky-img relative">
+<div id="post-display-sticky-img-{{ block.id }}" class="post-display-sticky-img relative p-10">
 
 <div class="flex flex-wrap max-w-screen-xl mx-auto">
     <div class="w-full lg:w-2/3 p-4">
@@ -32,7 +32,7 @@
             <p>No posts found.</p>
         {% endif %}
     </div>
-    <div class="w-full lg:w-1/3 p-4">
+    <div class="w-full lg:w-1/3 mt-4 p-4">
         <img class="sticky-img" src="{{ fields.sticky_image['url'] }}" alt="{% if fields.sticky_image['alt'] %}{{ fields.sticky_image['alt'] }}{% else %}Custom {% endif %}"/>
     </div>
 </div>

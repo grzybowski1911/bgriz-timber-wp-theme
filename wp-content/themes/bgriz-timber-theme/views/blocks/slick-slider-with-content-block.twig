@@ -10,25 +10,28 @@
 
 {% else %}
 
-<div class="text-center mb-4">
-    <h2 class="text-xl font-bold">{{ fields.title }}</h2>
-</div>
-
-<div class="flex flex-col md:flex-row sm:max-w-[1200px]">
-    <div class="md:w-1/3 p-4">
-        {{ fields.content }}
+<div class="slick-slider-with-content {{fields.section_background_color}} p-10">
+    <div class="text-center mb-4 p-8">
+        <h2 class="text-xl font-bold">{{ fields.title }}</h2>
     </div>
-    <div class="md:w-2/3 p-4">
-      <div class="slick-slider">
-          {% for image in fields.slider_images %}
-              <div>
-                  <img src="{{ image.image.url }}" alt="{{ image.image.alt }}" />
-              </div>
-          {% endfor %}
-      </div>
+    <div class="flex items-center justify-center">
+        <div class="flex flex-col md:flex-row sm:max-w-[1200px]">
+            <div class="md:w-1/3 p-4">
+                {{ fields.content }}
+            </div>
+            <div class="md:w-2/3 p-8">
+                <h4 class="text-center">{{ fields.slider_title }}</h4>
+                <div class="slick-slider">
+                    {% for image in fields.slider_images %}
+                        <div class="slide-outer">
+                            <img class="slide-img" src="{{ image.image.url }}" alt="{{ image.image.alt }}" />
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
 
 {% endif %}
 
@@ -40,10 +43,12 @@
     // Initialize Slick slider with options
     jQuery(document).ready(function($) {
         $('.slick-slider').slick({
-            // Add your Slick slider options here
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
             autoplay: true,
-            dots: true,
-            // Add more options as needed
+            autoplaySpeed: 2000,
+            arrows: true
         });
     });
 </script>

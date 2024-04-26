@@ -213,6 +213,19 @@ button {
     
 }
 
+// Slick Slider With Content 
+
+.slick-slider-with-content {
+    .slick-slider {
+        .slide-outer {
+            padding: 15px;
+            .slide-img {
+                border: solid black 5px;
+            }
+        }
+    }
+}
+
 
 // General override for gutenberg previews
 // issues with widths on blocks display improperly on the backend 
