@@ -111,6 +111,13 @@ function enqueue_load_more_scripts() {
 
 add_action('wp_enqueue_scripts', 'enqueue_load_more_scripts');
 
+// register navs 
+
+function theme_register_nav_menu() {
+  register_nav_menu('primary_menu', __('Primary Menu', 'theme'));
+}
+add_action('after_setup_theme', 'theme_register_nav_menu');
+
 // Define custom post type for Jobs
 function custom_post_type_jobs() {
   $labels = array(

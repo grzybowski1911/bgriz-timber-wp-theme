@@ -145,6 +145,20 @@ button {
 }
 
 
+// Navigation 
+
+.header {
+    
+    .nav {
+        @media (min-width: 1024px) {
+            #menu-toggle {
+                display: none;
+            }
+        }
+    }
+
+}
+
 // Homepage Banner Block
 
 .banner-overlay {
