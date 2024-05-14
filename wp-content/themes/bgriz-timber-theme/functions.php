@@ -96,6 +96,7 @@ function enqueue_styles() {
     
     wp_enqueue_script( 'jquery' ); 
     wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/static/slick/slick.min.js', array('jquery'), '1.8.1', true );
+    wp_enqueue_script(  'main-js' , get_template_directory_uri() . '/src/js/main.js', array('jquery'), '1.8.1', true );
 
   }
 add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
