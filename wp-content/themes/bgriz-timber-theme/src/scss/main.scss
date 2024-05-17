@@ -148,23 +148,42 @@ button {
 // Navigation 
 
 .header {
-    
-    .nav {
 
-        .main-menu {
-            .menu-item {
-                .menu-children {
-                    display: none;
-                }
+    .main-menu {
+        position: relative;
+      
+        > li {
+          position: relative;
+      
+          .menu-children {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+      
+            // Ensuring the dropdown does not affect the flow of other elements
+            > * {
+              padding: 10px;
+              white-space: nowrap; // Prevent line breaks
             }
-        }
-
-        @media (min-width: 1024px) {
-            #menu-toggle {
-                display: none;
+          }
+      
+          &:hover {
+            .menu-children {
+              display: block;
+              opacity: 1;
+              transform: translateY(0);
             }
+          }
         }
-    }
+      }
 
 }
 

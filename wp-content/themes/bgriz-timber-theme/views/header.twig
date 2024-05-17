@@ -1,24 +1,24 @@
-<header class="header" >
-	{% block header %}
+<header class="header">
+    {% block header %}
     <nav class="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
-        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+        <div class="container mx-auto relative">
             <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
             </a>
-            <button data-collapse-toggle="mega-menu-full-image" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-full-image" aria-expanded="false">
+            <button data-collapse-toggle="mega-menu-full-image" type="button" class="" aria-controls="mega-menu-full-image" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
                 </svg>
             </button>
-            <div id="mega-menu-full-image" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
-                <ul class="main-menu flex dflex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
+            <div id="mega-menu-full-image" class="mt-4 md:mt-0 relative">
+                <ul class="main-menu flex flex-col md:flex-row md:space-x-8 rtl:space-x-reverse">
                     {% for item in menu.items %}
-                        <li class="menu-item">
-                            <a href="{{ item.link }}">{{ item.title }}</a>
+                        <li class="menu-item relative">
+                            <a href="{{ item.link }}" class="block px-4 py-2">{{ item.title }}</a>
                             {% if(item.children) %}
-                            <div class="menu-children transition-all duration-300 container-medium:fixed container-medium:left-0 container-medium:transition-none container-medium:max-h-none overflow-hidden">
+                            <div class="menu-children absolute left-0 top-full hidden bg-white shadow-lg z-10 transition-opacity duration-300 opacity-0 transform -translate-y-2 w-full md:max-w-[100vw]">
                                 {% include 'partial/nav-sub-items.twig' with {'children': item.children} %}
                             </div>
                             {% endif %}
@@ -28,36 +28,5 @@
             </div>
         </div>
     </nav>
-	{% endblock %}
+    {% endblock %}
 </header>
-
-
-<script>
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-        var menu = document.getElementById('menu');
-        menu.classList.toggle('hidden');
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get all mega menu items
-        var megaMenuItems = document.querySelectorAll('.mega-menu');
-
-        // Loop through mega menu items
-        megaMenuItems.forEach(function(item) {
-            // Add event listener for mouse enter
-            item.addEventListener('mouseenter', function() {
-                // Show mega menu content
-                var megaMenuContent = this.querySelector('.mega-menu-content');
-                megaMenuContent.style.display = 'block';
-            });
-
-            // Add event listener for mouse leave
-            item.addEventListener('mouseleave', function() {
-                // Hide mega menu content
-                var megaMenuContent = this.querySelector('.mega-menu-content');
-                megaMenuContent.style.display = 'none';
-            });
-        });
-    });
-
-</script>

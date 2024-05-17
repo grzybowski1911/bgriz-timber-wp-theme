@@ -10,14 +10,14 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-        // Add mouseout event listener to hide the menu-children only when the cursor leaves both the parent and children
         menuItem.addEventListener('mouseout', function(event) {
-            if (!isCursorWithinElement(event, menuItem) && !isCursorWithinElement(event, menuChildren)) {
-                menuChildren.style.display = 'none';
+            if (!isCursorWithinElement(event, menuItem) && (!menuChildren || !isCursorWithinElement(event, menuChildren))) {
+                if (menuChildren) {
+                    menuChildren.style.display = 'none';
+                }
             }
         });
 
-        // Add mouseover event listener to keep the menu-children open while the cursor is within them
         if (menuChildren) {
             menuChildren.addEventListener('mouseover', function() {
                 menuChildren.style.display = 'block';
@@ -31,8 +31,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Helper function to check if the cursor is within an element
     function isCursorWithinElement(event, element) {
+        if (!element) {
+            return false;
+        }
+        
         var rect = element.getBoundingClientRect();
         return (
             event.clientX >= rect.left &&
