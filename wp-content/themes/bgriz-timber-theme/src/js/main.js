@@ -1,4 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    var menuItems = document.querySelectorAll('.main-menu > li');
+
+    function setMenuChildrenWidth() {
+        var navContainer = document.querySelector('.nav-container');
+
+        menuItems.forEach(function(menuItem) {
+            var menuChildren = menuItem.querySelector('.menu-children');
+
+            if (menuChildren && navContainer) {
+                menuChildren.style.width = navContainer.offsetWidth + 'px';
+            }
+        });
+    }
+
+    setMenuChildrenWidth();
+
     var menuItems = document.querySelectorAll('.main-menu > li');
 
     menuItems.forEach(function(menuItem) {
@@ -44,4 +61,5 @@ document.addEventListener("DOMContentLoaded", function() {
             event.clientY <= rect.bottom
         );
     }
+
 });

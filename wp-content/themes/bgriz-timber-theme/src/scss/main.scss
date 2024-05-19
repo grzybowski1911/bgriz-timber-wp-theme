@@ -148,44 +148,45 @@ button {
 // Navigation 
 
 .header {
+    .nav-container {
+        position: relative;
+    }
 
     .main-menu {
-        position: relative;
-      
-        > li {
-          position: relative;
-      
-          .menu-children {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: white;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            width: 100%;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-      
-            // Ensuring the dropdown does not affect the flow of other elements
-            > * {
-              padding: 10px;
-              white-space: nowrap; // Prevent line breaks
-            }
-          }
-      
-          &:hover {
-            .menu-children {
-              display: block;
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        }
-      }
 
+        > li {
+
+            .menu-children {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: white;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                width: 100%;
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+
+                > * {
+                    padding: 10px;
+                    white-space: nowrap; // Prevent line breaks
+                }
+            }
+
+            &:hover {
+                .menu-children {
+                    display: block;
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
 }
+
+
 
 // Homepage Banner Block
 

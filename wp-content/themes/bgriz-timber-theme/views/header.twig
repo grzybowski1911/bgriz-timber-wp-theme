@@ -1,32 +1,32 @@
 <header class="header">
     {% block header %}
-    <nav class="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
-        <div class="container mx-auto relative">
-            <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-            </a>
-            <button data-collapse-toggle="mega-menu-full-image" type="button" class="" aria-controls="mega-menu-full-image" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-                </svg>
-            </button>
-            <div id="mega-menu-full-image" class="mt-4 md:mt-0 relative">
-                <ul class="main-menu flex flex-col md:flex-row md:space-x-8 rtl:space-x-reverse">
-                    {% for item in menu.items %}
-                        <li class="menu-item relative">
-                            <a href="{{ item.link }}" class="block px-4 py-2">{{ item.title }}</a>
-                            {% if(item.children) %}
-                            <div class="menu-children absolute left-0 top-full hidden bg-white shadow-lg z-10 transition-opacity duration-300 opacity-0 transform -translate-y-2 w-full md:max-w-[100vw]">
-                                {% include 'partial/nav-sub-items.twig' with {'children': item.children} %}
-                            </div>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
+        <nav class="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
+            <div class="nav-container container mx-auto relative">
+                <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                </a>
+                <button data-collapse-toggle="mega-menu-full-image" type="button" class="" aria-controls="mega-menu-full-image" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                    </svg>
+                </button>
+                <div class="mt-4 md:mt-0">
+                    <ul class="main-menu flex flex-col md:flex-row md:space-x-8 rtl:space-x-reverse">
+                        {% for item in menu.items %}
+                            <li class="menu-item">
+                                <a href="{{ item.link }}" class="block px-4 py-2">{{ item.title }}</a>
+                                {% if(item.children) %}
+                                <div class="menu-children absolute left-0 top-full hidden bg-white shadow-lg z-10 transition-opacity duration-300 opacity-0 transform -translate-y-2">
+                                    {% include 'partial/nav-sub-items.twig' with {'children': item.children} %}
+                                </div>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     {% endblock %}
 </header>

@@ -1157,10 +1157,6 @@ video {
     min-width: 250px;
   }
 
-  .md\:max-w-\[100vw\] {
-    max-width: 100vw;
-  }
-
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
