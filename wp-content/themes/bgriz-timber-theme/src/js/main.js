@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function() {
     var menuItems = document.querySelectorAll('.main-menu > li');
 
     function setMenuChildrenWidth() {
+
+        console.log('set menu width');
+
         var navContainer = document.querySelector('.nav-container');
 
         menuItems.forEach(function(menuItem) {
@@ -15,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     setMenuChildrenWidth();
+
+    window.addEventListener('resize', setMenuChildrenWidth);
 
     var menuItems = document.querySelectorAll('.main-menu > li');
 

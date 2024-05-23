@@ -148,8 +148,19 @@ button {
 // Navigation 
 
 .header {
+
+    .logo-text {
+        font-size: $h3-font-size;
+        font-family: $heading-font;
+    }
+
     .nav-container {
         position: relative;
+
+        .nav-toggle {
+            display: none;
+        }
+
     }
 
     .main-menu {

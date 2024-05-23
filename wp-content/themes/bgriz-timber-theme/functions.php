@@ -231,4 +231,13 @@ function custom_post_type_projects() {
 }
 add_action( 'init', 'custom_post_type_projects', 0 );
 
+// add site settings fields to timber context 
 
+function add_to_context($context) {
+
+  $context['nav_logo'] = get_field('navigation_settings_nav_logo', 'option');
+  
+  return $context;
+
+}
+add_filter('timber/context', 'add_to_context');
