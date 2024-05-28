@@ -82,6 +82,11 @@ h6 {
   font-family: $heading-font;
 }
 
+.highlight-txt {
+    font-size: $h5-font-size;
+    font-family: $heading-font;
+}
+
 body {
   font-size: $body-font-size;
   font-family: $body-font;
@@ -147,7 +152,20 @@ button {
 
 // Navigation 
 
+.sticky {
+    position: sticky; 
+    top: 0;
+}
+
+.not-sticky {
+    position: sticky; 
+    top: -200px;
+}
+
 .header {
+
+    z-index: 99999;
+    transition: all .5s;
 
     .logo-text {
         font-size: $h3-font-size;
@@ -161,6 +179,10 @@ button {
             display: none;
         }
 
+    }
+
+    .featured-item {
+        background: $dark-blue;
     }
 
     .main-menu {

@@ -67,4 +67,23 @@ document.addEventListener("DOMContentLoaded", function() {
         );
     }
 
+    let lastScrollTop = 0;
+    const header = document.querySelector('.header');
+    const sticky = 'sticky';
+    const nosticky = 'not-sticky';
+  
+    window.addEventListener('scroll', () => {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        // Downscroll
+        header.classList.remove(sticky);
+        header.classList.add(nosticky);
+      } else {
+        // Upscroll
+        header.classList.remove(nosticky);
+        header.classList.add(sticky);
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+    });
+
 });
