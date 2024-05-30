@@ -219,6 +219,23 @@ button {
     }
 }
 
+/* custom styles for contact button sliding in and out have to manually control with JS */
+#contactButton {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: $dark-blue;
+    color: $white;
+    padding: 10px 20px;
+    transition: transform 0.3s ease-in-out; 
+    transform: translateX(150%); 
+    z-index: 999999;
+}
+
+#contactOverlay {
+    z-index: 99999999;
+}
+
 
 
 // Homepage Banner Block
@@ -247,7 +264,55 @@ button {
     overflow: hidden;
 
     .column {
-        z-index: 999;
+        z-index: 99;
+
+        .list-items {
+            position: relative;
+            .p-2 {
+              &[data-tooltip] {
+                position: relative;
+                cursor: pointer;
+                z-index: 9999;
+          
+                &:hover::after {
+                    content: attr(data-tooltip);
+                    position: absolute;
+                    background: rgba(0, 0, 0, 0.75);
+                    color: #fff;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    bottom: 100%; // Position above the element
+                    left: 50%;
+                    transform: translateX(-50%);
+                    white-space: nowrap;
+                    z-index: 9999;
+                    opacity: 0;
+                    transition: opacity 0.2s;
+                    margin-bottom: 5px; // Space between element and tooltip
+                }
+          
+                &:hover::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
+                    z-index: 9999;
+                    opacity: 0;
+                    transition: opacity 0.2s;
+                    margin-bottom: 5px; // Space between element and tooltip
+                }
+          
+                &:hover::after,
+                &:hover::before {
+                  opacity: 1;
+                }
+              }
+            }
+          }
     }
 
     #circle {

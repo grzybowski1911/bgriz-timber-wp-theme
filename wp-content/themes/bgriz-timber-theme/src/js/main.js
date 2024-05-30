@@ -71,19 +71,39 @@ document.addEventListener("DOMContentLoaded", function() {
     const header = document.querySelector('.header');
     const sticky = 'sticky';
     const nosticky = 'not-sticky';
-  
+    const contactButton = document.getElementById('contactButton');
+
     window.addEventListener('scroll', () => {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       if (scrollTop > lastScrollTop) {
         // Downscroll
         header.classList.remove(sticky);
         header.classList.add(nosticky);
+        contactButton.style.transform = 'translateX(0%)';
       } else {
         // Upscroll
         header.classList.remove(nosticky);
         header.classList.add(sticky);
+        contactButton.style.transform = 'translateX(150%)';
       }
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+    });
+
+    const contactOverlay = document.getElementById('contactOverlay');
+    const closeButton = document.getElementById('closeButton');
+
+    contactButton.addEventListener('click', () => {
+      contactOverlay.classList.remove('hidden');
+    });
+
+    closeButton.addEventListener('click', () => {
+      contactOverlay.classList.add('hidden');
+    });
+
+    contactOverlay.addEventListener('click', (e) => {
+      if (e.target === contactOverlay) {
+        contactOverlay.classList.add('hidden');
+      }
     });
 
 });

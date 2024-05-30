@@ -234,7 +234,7 @@
             <div class="list-items p-5">
                 {% for item in column.list_items %}
                     
-                    <p class="p-2 border-t border-gray-700">
+                    <p class="p-2 border-t border-gray-700" data-tooltip="{{ item.tooltip_text }}">
                         <i class="fas fa-code mr-2"></i> {{ item.list_item_text }}
                     </p>
 
