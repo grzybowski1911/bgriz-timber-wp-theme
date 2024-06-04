@@ -13,7 +13,7 @@
 <div id="post-display-sticky-img-{{ block.id }}" class="post-display-sticky-img relative p-10">
 
 <div class="flex flex-wrap max-w-screen-xl mx-auto">
-    <div class="w-full lg:w-2/3 p-4">
+    <div class="w-full lg:w-2/3 p-4 bg-white">
         {% set post_type = fields.post_type_selection %}
         {% set posts = get_custom_posts(post_type) %}
         {% if posts|length > 0 %}

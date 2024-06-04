@@ -1,4 +1,32 @@
+const fadeLogo = () => {
+    let pos = window.scrollY;
+    let hero = document.getElementById('hero').getBoundingClientRect().height;
+    let logo = document.getElementById('banner-logo');
+    //let downArrow = document.getElementById('down-arrow');
+
+    let windowBottom = window.scrollY + window.innerHeight;
+    let elementTop = document.querySelector(".scroll-content").getBoundingClientRect().top + window.scrollY;
+    let pixel = windowBottom - elementTop;
+
+    if (logo) {
+        if (pos <= hero) {
+            var op = 1 - pos / hero;
+        } else {
+            op = 0;
+        }
+        logo.style.opacity = op;
+        if (elementTop > pixel) {
+            logo.style.marginBottom = pixel + 'px';
+        }
+        //if (downArrow) {
+        //    downArrow.style.opacity = op;
+        //}
+    }
+};
+
 document.addEventListener("DOMContentLoaded", function() {
+
+    window.addEventListener('scroll', fadeLogo);
 
     var menuItems = document.querySelectorAll('.main-menu > li');
 

@@ -153,13 +153,17 @@ button {
 // Navigation 
 
 .sticky {
-    position: sticky; 
+    position: fixed; 
     top: 0;
+    z-index: 999;
+    width: 100vw;
 }
 
 .not-sticky {
-    position: sticky; 
+    position: fixed; 
     top: -200px;
+    z-index: 999;
+    width: 100vw;
 }
 
 .header {
@@ -236,11 +240,23 @@ button {
     z-index: 99999999;
 }
 
+// Scroll up content effect
+
+.scroll-content {
+    position: absolute;
+    top: 0;
+    z-index: 99;
+    width: 100vw;
+    margin-top: 100vh;
+}
 
 
 // Homepage Banner Block
 
 .banner-overlay {
+    z-index: 9;
+    top: 0;
+    position: fixed;
     height: 100vh;
     width: 100%;
     background: linear-gradient(270deg, #6093BF, #72CEF2, #7aa5bf, #CEE8F2, #f2f2f2);
@@ -255,13 +271,18 @@ button {
 
 .two-thirds-img-cta {
     height: 100vh;
+    z-index: 99;
+    position: relative;
 }
 
 // Spinning Logo BG Cols Block 
 
 .spinning-logo-bg-cols {
+    z-index: 99;
     position: relative;
     overflow: hidden;
+    min-height: 100vh;
+    background-color: $white;
 
     .column {
         z-index: 99;
@@ -274,7 +295,7 @@ button {
                 cursor: pointer;
                 z-index: 9999;
           
-                &:hover::after {
+                &:hover::before {
                     content: attr(data-tooltip);
                     position: absolute;
                     background: rgba(0, 0, 0, 0.75);
@@ -284,29 +305,13 @@ button {
                     bottom: 100%; // Position above the element
                     left: 50%;
                     transform: translateX(-50%);
-                    white-space: nowrap;
+                    width: 250px;
                     z-index: 9999;
                     opacity: 0;
                     transition: opacity 0.2s;
                     margin-bottom: 5px; // Space between element and tooltip
                 }
           
-                &:hover::before {
-                    content: '';
-                    position: absolute;
-                    bottom: 100%;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    border-width: 5px;
-                    border-style: solid;
-                    border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
-                    z-index: 9999;
-                    opacity: 0;
-                    transition: opacity 0.2s;
-                    margin-bottom: 5px; // Space between element and tooltip
-                }
-          
-                &:hover::after,
                 &:hover::before {
                   opacity: 1;
                 }
@@ -338,7 +343,9 @@ button {
 // Post Dislay Sticky Img Block 
 
 .post-display-sticky-img {
-    background-color: $white;
+    position: relative;
+    z-index: 99;
+    min-height: 100vh;
 
     .sticky-img {
         margin: 0 auto;
@@ -351,12 +358,18 @@ button {
 // Post Display Grid 
 
 .post-display-grid {
-    
+    position: relative;
+    z-index: 99;
+    min-height: 100vh;
+    background-color: $white;
 }
 
 // Slick Slider With Content 
 
 .slick-slider-with-content {
+    position: relative;
+    z-index: 99;
+    min-height: 100vh;
     .slick-slider {
         .slide-outer {
             padding: 15px;
@@ -365,6 +378,12 @@ button {
             }
         }
     }
+}
+
+footer {
+    position: relative;
+    background-color: $dark;
+    z-index: 999;
 }
 
 

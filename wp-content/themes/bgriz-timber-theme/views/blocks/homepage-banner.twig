@@ -8,20 +8,20 @@
 
 {% if is_preview %}
 
-<div class="banner-overlay">
+<div class="banner-overlay" id="hero">
     <section id="homepage-banner-{{ block.id }}" class="homepage-banner wrapper bg-cover flex justify-center items-center bg-no-repeat" style="background-image: url('{{ fields.homepage_banner_bg_image['url'] }}');">
     <div class="logo-container">
-        <img src="{{ fields.homepage_banner_logo_image['url'] }}" alt="{% if fields.homepage_banner_logo_image['alt'] %}{{ fields.block_image['alt'] }}{% else %}Ben Grzybowski Web Development and Design Portland Oregon Logo{% endif %}">
+        <img id="banner-logo" src="{{ fields.homepage_banner_logo_image['url'] }}" alt="{% if fields.homepage_banner_logo_image['alt'] %}{{ fields.block_image['alt'] }}{% else %}Ben Grzybowski Web Development and Design Portland Oregon Logo{% endif %}">
     </div>
     </section>
 </div>
 
 {% else %}
 
-<div class="banner-overlay">
+<div class="banner-overlay" id="hero">>
     <section id="homepage-banner-{{ block.id }}" class="homepage-banner wrapper h-screen w-screen bg-cover flex justify-center items-center bg-no-repeat" style="background-image: url('{{ fields.homepage_banner_bg_image['url'] }}');">
     <div class="logo-container">
-        <img src="{{ fields.homepage_banner_logo_image['url'] }}" alt="{% if fields.homepage_banner_logo_image['alt'] %}{{ fields.block_image['alt'] }}{% else %}Ben Grzybowski Web Development and Design Portland Oregon Logo{% endif %}">
+        <img id="banner-logo" src="{{ fields.homepage_banner_logo_image['url'] }}" alt="{% if fields.homepage_banner_logo_image['alt'] %}{{ fields.block_image['alt'] }}{% else %}Ben Grzybowski Web Development and Design Portland Oregon Logo{% endif %}">
     </div>
     </section>
 </div>
