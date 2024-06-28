@@ -28,6 +28,13 @@
                                 <img src="{{ post.thumbnail_url ? post.thumbnail_url : '/wp-content/uploads/2024/03/2021-logo.png' }}" alt="{% if post.alt %}{{ post.alt }}{% else %}Web development projects Ben Grzybowski has built or contributed to{% endif %}" class="max-w-full h-auto">
                             </div>
                         </div>
+                        <div class="overlay p-4">
+                            <h4>{{ post.post_title }}</h4>
+                            {% if post.post_excerpt is defined %}
+                                <p class="text-center">{{ post.post_excerpt }}</p>
+                            {% endif %}
+                            <a href="{{post.post_link}}"><button class="bg-light">Learn More</button></a>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
@@ -35,11 +42,12 @@
             <p>No posts found.</p>
         {% endif %}
     </div>
-    <button id="load-more-posts" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Load More
-    </button>
 </div>
-
+    <div class="flex justify-center items-center">
+        <button id="load-more-posts" class="bg-dark">
+            Load More
+        </button>
+    </div>
 </div>
 
 

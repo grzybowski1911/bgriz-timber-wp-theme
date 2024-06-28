@@ -40,6 +40,7 @@ function get_custom_posts($post_type, $paged = 1) {
           'post_title' => get_the_title($post),
           'post_excerpt' => get_the_excerpt($post),
           'thumbnail_url' => $thumbnail_url ? $thumbnail_url : '',
+          'post_link' => get_permalink($post->ID)
       );
   }
 
@@ -51,6 +52,9 @@ function get_custom_posts($post_type, $paged = 1) {
 add_filter('get_twig', 'add_custom_twig_functions');
 function add_custom_twig_functions($twig) {
   $twig->addFunction(new \Twig\TwigFunction('get_custom_posts', 'get_custom_posts'));
+  $twig->addFunction(new \Twig\TwigFunction('var_dump', function($var){
+    var_dump($var);
+  }));
   return $twig;
 }
 
@@ -65,10 +69,15 @@ function ajax_load_more_posts() {
           echo '
           <div class="post-grid-item p-4">
             <div class="post-grid-item-inner shadow-lg rounded-lg mx-4 my-4">
-                <h4 class="text-lg font-semibold text-center p-4">'. esc_html($post['title']) .'</h4>
+                <h4 class="text-lg font-semibold text-center p-4">'. esc_html($post['post_title']) .'</h4>
                 <div class="p-4 post-grid-img">
                     <img src="'. esc_html($featured_image_url) .'" alt="" class="max-w-full h-auto">
                 </div>
+            </div>
+            <div class="overlay p-4">
+                <h4>'. esc_html($post['post_title']) .'</h4>
+                <p class="text-center">'. $post['post_excerpt'] .'</p>
+                <a href="'. esc_html($post['post_link']) .'"><button class="bg-light">Learn More</button></a>
             </div>
           </div>';
       }

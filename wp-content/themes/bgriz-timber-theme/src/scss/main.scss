@@ -17,6 +17,15 @@
     }
 }
 
+// mixins 
+
+@mixin button-styles {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+}
+
 // Colors 
 
 $white: #fff;
@@ -26,6 +35,8 @@ $med-dark-blue: #72CEF2;
 $med-blue: #7aa5bf;
 $light-blue: #CEE8F2;
 $grey: #f2f2f2;
+
+$transparent-black: rgba(0,0,0,0.75);
 
 // Fonts 
 // Font families added in html-header.twig
@@ -95,11 +106,8 @@ body {
 // buttons 
 
 button {
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;
-    border: none;
-    border-radius: 0.25rem;
-}
+    @include button-styles;
+} 
 
 .bg-dark {
     background-color: $dark;
@@ -362,7 +370,33 @@ button {
     z-index: 99;
     min-height: 100vh;
     background-color: $white;
+
+    .post-grid-item {
+        position: relative;
+        overflow: hidden;
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%; // Set width to 100% of parent
+            height: 100%; // Set height to 100% of parent
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: $transparent-black;
+            color: white;
+        }
+
+        &:hover .overlay {
+            //transform: translateY(0);
+            opacity: 1;
+        }
+    }
 }
+
 
 // Slick Slider With Content 
 

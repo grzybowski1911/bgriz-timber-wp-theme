@@ -20,8 +20,11 @@
             {% for post in posts %}
                 <div class="mt-12 mb-12 ml-8 mr-8 flex flex-col md:flex-row">
                     <div class="content-contain m-4 md:w-3/4">
-                        <h2>{{ post.post_title }}</h2>
-                        <p>{{ post.post_excerpt }}</p>
+                        <div style="padding: 8px;">
+                            <h2>{{ post.post_title }}</h2>
+                            <p>{{ post.post_excerpt }}</p>
+                        </div>
+                        <a href="{{post.post_link}}"><button class="bg-medium">View Details</button></a>
                     </div>
                     <div class="img-contain m-4 md:w-1/4 flex justify-center items-center">
                         <img src="{{ post.thumbnail_url ? post.thumbnail_url : '/wp-content/uploads/2024/03/2021-logo.png' }}" alt="{% if post.alt %}{{ post.alt }}{% else %}Previous web development work company logo{% endif %}" class="max-w-full h-auto">
