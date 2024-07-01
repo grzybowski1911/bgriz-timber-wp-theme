@@ -1,0 +1,36 @@
+{#
+/**
+ * Block Name: Hero Banner
+ *
+ * This is the template that displays the Hero Banner block.
+ */
+#}
+
+{% if is_preview %}
+
+<div class="banner-overlay" id="hero">
+    <section id="hero-banner-{{ block.id }}" class="hero-banner wrapper bg-cover flex justify-center items-center bg-no-repeat" style="background-image: url('{{ fields.hero_banner_bg_image['url'] }}');">
+    <div class="logo-container">
+        <img id="banner-logo" src="{{ fields.hero_banner_logo_image['url'] }}" alt="{% if fields.hero_banner_logo_image['alt'] %}{{ fields.block_image['alt'] }}{% else %}Ben Grzybowski Web Development and Design Portland Oregon Logo{% endif %}">
+    </div>
+    </section>
+</div>
+
+{% else %}
+
+<div class="banner-overlay {{ fields.overlay == 'Yes' ? 'bg-color-change' : '' }}" 
+     id="hero" 
+     style="{{ fields.background_color is defined ? 'background-color: ' ~ fields.background_color ~ ';' : '' }}">
+    <section id="hero-banner-{{ block.id }}" class="hero-banner wrapper h-screen w-screen bg-cover flex justify-center items-center bg-no-repeat" style="background-image: url('{{ fields.hero_banner_bg_image['url'] }}');">
+    <div class="logo-container">
+        <img id="banner-logo" src="{{ fields.hero_banner_logo_image['url'] }}" alt="{% if fields.hero_banner_logo_image['alt'] %}{{ fields.block_image['alt'] }}{% else %}Ben Grzybowski Web Development and Design Portland Oregon Logo{% endif %}">
+    </div>
+    </section>
+</div>
+
+{% endif %}
+
+
+<style type="text/css">
+
+</style>

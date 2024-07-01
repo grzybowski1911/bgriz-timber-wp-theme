@@ -259,7 +259,7 @@ button {
 }
 
 
-// Homepage Banner Block
+// Hero Banner Block
 
 .banner-overlay {
     z-index: 9;
@@ -267,6 +267,9 @@ button {
     position: fixed;
     height: 100vh;
     width: 100%;
+}
+
+.bg-color-change {
     background: linear-gradient(270deg, #6093BF, #72CEF2, #7aa5bf, #CEE8F2, #f2f2f2);
     background-size: 1000% 1000%;
     -webkit-animation: bgChange 30s ease infinite;

@@ -9,15 +9,15 @@ function register_acf_blocks()
         return;
     }
 
-    // Homepage banner block
+    // Hero banner block
     acf_register_block([
-        'name' => 'homepage_banner',
-        'title' => __('Homepage Banner', 'bgriz-timber-theme'),
-        'description' => __('Large Banner block intended for homepage.', 'bgriz-timber-theme'),
-        'render_callback' => 'homepage_banner_render_callback',
+        'name' => 'hero_banner',
+        'title' => __('Hero Banner', 'bgriz-timber-theme'),
+        'description' => __('Large Banner block intended for hero image at top of pages.', 'bgriz-timber-theme'),
+        'render_callback' => 'hero_banner_render_callback',
         'category' => 'formatting',
         'icon' => 'dashicons-desktop',
-        'keywords' => ['homepage','banner'],
+        'keywords' => ['hero','banner'],
     ]);
 
     // Two Thirds Img Cta Block
@@ -84,7 +84,7 @@ function register_acf_blocks()
  * @param   string $content    The block content (emtpy string).
  * @param   bool   $is_preview True during AJAX preview.
  */
-function homepage_banner_render_callback($block, $content = '', $is_preview = false)
+function hero_banner_render_callback($block, $content = '', $is_preview = false)
 {
     $context = Timber::context([
         // Store block values.
@@ -96,7 +96,7 @@ function homepage_banner_render_callback($block, $content = '', $is_preview = fa
     ]);
 
     // Render the block.
-    Timber::render('blocks/homepage-banner.twig', $context);
+    Timber::render('blocks/hero-banner.twig', $context);
 }
 
 function two_thirds_img_cta_block_render_callback($block, $content = '', $is_preview = false) {
